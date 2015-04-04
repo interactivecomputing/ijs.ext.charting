@@ -1,0 +1,36 @@
+{
+  "name": "ijs.ext.charting",
+  "version": "0.1.0",
+  "description": "IJavaScript extension for creating charts using the Google Charting API.",
+  "keywords": [
+    "interactive",
+    "javascript",
+    "ijs",
+    "ijavascript",
+    "ipython",
+    "notebook",
+    "repl",
+    "console",
+    "ide",
+    "editor",
+    "chart",
+    "plot",
+    "graph"
+  ],
+  "author": {
+    "author": "Nikhil Kothari",
+    "url": "http://www.nikhilk.net"
+  },
+  "license": "Apache 2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interactivecomputing/ijs.ext.charting"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "dependencies": {
+  },
+  "files": [ "src" ],
+  "main": "src/index.js"
+}
