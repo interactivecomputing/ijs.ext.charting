@@ -1,6 +1,6 @@
 {
   "name": "ijs.ext.charting",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "IJavaScript extension for creating charts using the Google Charting API.",
   "keywords": [
     "interactive",

@@ -14,18 +14,23 @@
 // The commands implemented by the charting extension.
 //
 
-// Implements the %%chart command, that can be used to render a chart.
-function chartCommand(shell, args, data, evaluationId) {
-  data = data || '';
-  data = data.trim();
+var util = require('util');
+var dataTable = require('./dataTable.js');
 
-  var chartData = shell.state[args.data];
-  if (!chartData) {
+
+// Implements the %%chart command, that can be used to render a chart.
+function chartCommand(shell, args, text, evaluationId) {
+  var data = shell.state[args.data];
+  if (!data) {
     throw shell.createError('A valid data variable was not specified.');
   }
 
+  var chartModel = { type: args.type, options: JSON.parse(text || '{}') };
+  var chartData = dataTable.create(data);
+  var chartScript = util.format('gchart.render(elem, %j, %j);', chartModel, chartData);
+
   return shell.state._.data.html('')
-              .addScript('elem.innerHTML = gchart.toString();')
+              .addScript(chartScript)
               .addDependency('gchart', 'gchart');
 }
 chartCommand.options = function(parser) {

@@ -27,7 +27,7 @@ define(function() {
     line: { name: 'LineChart' },
     pie: { name: 'PieChart' },
     scatter: { name: 'ScatterChart' },
-    table: { script: 'table', name: 'Table' }
+    table: { name: 'Table', script: 'table' }
   };
 
   function renderChart(element, model, data) {
