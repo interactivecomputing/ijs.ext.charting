@@ -15,11 +15,14 @@
 //
 
 var util = require('util');
+var commands = require('./commands');
 
 var CHART_SCRIPT_URL =
-  'https://github.com/interactivecomputing/ijs.ext.charting/raw/master/dist/gchart';
+  'https://rawgit.com/interactivecomputing/ijs.ext.charting/master/dist/gchart';
 
 function initialize(shell, callback) {
+  shell.registerCommand('chart', commands.chart);
+
   // The result of loading the extension is a small bit of client-side script.
 
   // In particular this script adds requirejs config to be able to load
