@@ -29,7 +29,7 @@ function chartCommand(shell, args, text, evaluationId) {
   var chartData = dataTable.create(data);
   var chartScript = util.format('gchart.render(elem, %j, %j);', chartModel, chartData);
 
-  return shell.state._.data.html('')
+  return shell.runtime.data.html('')
               .addScript(chartScript)
               .addDependency('gchart', 'gchart');
 }

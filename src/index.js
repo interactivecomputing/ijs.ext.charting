@@ -33,7 +33,7 @@ function initialize(shell, callback) {
                            CHART_SCRIPT_URL);
 
   process.nextTick(function() {
-    callback(null, shell.state._.data.script(script));
+    callback(null, shell.runtime.data.script(script));
   });
 }
 
