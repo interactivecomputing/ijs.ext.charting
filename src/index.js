@@ -14,9 +14,23 @@
 // The ijs extension implementation.
 //
 
+var util = require('util');
+
+var CHART_SCRIPT_URL =
+  'https://github.com/interactivecomputing/ijs.ext.charting/raw/master/dist/gchart';
+
 function initialize(shell, callback) {
+  // The result of loading the extension is a small bit of client-side script.
+
+  // In particular this script adds requirejs config to be able to load
+  // the script associated with this extension. This script is loaded directly
+  // from the github repository.
+
+  var script = util.format('require.config({ paths: { "gchart": "%s" } });',
+                           CHART_SCRIPT_URL);
+
   process.nextTick(function() {
-    callback(null, null);
+    callback(null, shell.state._.data.script(script));
   });
 }
 
