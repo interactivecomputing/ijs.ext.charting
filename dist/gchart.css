@@ -12,16 +12,17 @@ tr.gchart-table-oddrow {
   background-color: #f7f7f7;
 }
 tr.gchart-table-selectedTableRow {
-  background-color: #e1f5fe;
+  background-color: #e3f2fd;
 }
 tr.gchart-table-hoverrow {
-  background-color: #b3e5fc;
+  background-color: #bbdefb;
 }
 td.gchart-table-cell {
   border: solid 1px #cfcfcf;
 }
 td.gchart-table-rownumcell {
   border: solid 1px #cfcfcf;
+  color: #999;
 }
 th.gchart-table-headercell {
   border: solid 1px #cfcfcf;
