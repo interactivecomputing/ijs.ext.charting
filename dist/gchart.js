@@ -105,20 +105,30 @@ define(function() {
 
   // Supporting code to load the Google API Loader
 
+  var callbackName = '__googleApiLoaderCallback';
   function loadGoogleApiLoader(callback) {
+    var head = document.getElementsByTagName('head')[0];
+
     // Visualization packages are loaded using the Google API loader.
     // The loader URL itself must contain a callback (by name) that it invokes when its loaded.
-    var callbackName = '__googleApiLoaderCallback';
     window[callbackName] = callback;
 
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.async = true;
     script.src = '//www.google.com/jsapi?callback=' + callbackName;
-    document.getElementsByTagName('head')[0].appendChild(script);
+    head.appendChild(script);
+
+    // Also load the custom css
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = require.s.contexts._.config.paths.gchart + '.css';
+    head.appendChild(link);
   }
 
   loadGoogleApiLoader(function() {
+    delete window[callbackName];
     if (queue) {
       loadVisualizationPackages(queue.packages, queue.callbacks);
 
