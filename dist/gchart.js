@@ -27,7 +27,7 @@ define(function() {
     line: { name: 'LineChart' },
     pie: { name: 'PieChart' },
     scatter: { name: 'ScatterChart' },
-    table: { name: 'Table', script: 'table' }
+    table: { name: 'Table', script: 'table', options: tableOptions }
   };
 
   function renderChart(element, model, data) {
@@ -35,14 +35,31 @@ define(function() {
     var chartScript = chartInfo.script || 'corechart';
 
     require(['gchart!' + chartScript], function(visualization) {
+      var chartOptions = model.options || {};
+      if (chartInfo.options) {
+        chartOptions = chartInfo.options(chartOptions);
+      }
+
       var chartType = visualization[chartInfo.name];
+      var chart = new chartType(element);
       var dataTable = new visualization.DataTable(data);
 
-      var chart = new chartType(element);
-      chart.draw(dataTable, model.options);
+      chart.draw(dataTable, chartOptions);
     });
   }
 
+  function tableOptions(options) {
+    options.cssClassNames = {
+      tableRow: 'gchart-table-row',
+      headerRow: 'gchart-table-headerrow',
+      oddTableRow: 'gchart-table-oddrow',
+      selectedTableRow: 'gchart-table-selectedrow',
+      hoverTableRow: 'gchart-table-hoverrow',
+      tableCell: 'gchart-table-cell',
+      headerCell: 'gchart-table-headercell',
+      rowNumberCell: 'gchart-table-rownumcell'
+    }
+  }
 
   // Chart script loading functionality
 
