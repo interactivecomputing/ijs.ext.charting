@@ -37,7 +37,7 @@ define(function() {
     require(['gchart!' + chartScript], function(visualization) {
       var chartOptions = model.options || {};
       if (chartInfo.options) {
-        chartOptions = chartInfo.options(chartOptions);
+        chartInfo.options(chartOptions);
       }
 
       var chartType = visualization[chartInfo.name];
@@ -58,7 +58,7 @@ define(function() {
       tableCell: 'gchart-table-cell',
       headerCell: 'gchart-table-headercell',
       rowNumberCell: 'gchart-table-rownumcell'
-    }
+    };
   }
 
   // Chart script loading functionality
