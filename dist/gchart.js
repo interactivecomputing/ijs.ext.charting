@@ -128,7 +128,9 @@ define(function() {
   }
 
   loadGoogleApiLoader(function() {
+    // Remove the callback that was promoted to the global namespace.
     delete window[callbackName];
+
     if (queue) {
       loadVisualizationPackages(queue.packages, queue.callbacks);
 
